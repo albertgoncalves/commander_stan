@@ -17,7 +17,7 @@ $ make build
 ```
 
 ```
-$ cd ../
+$ cd ../models/
 $ sh {bernoulli|coin|german_tanks}.sh
 ```
 
