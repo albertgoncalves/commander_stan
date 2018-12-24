@@ -1,0 +1,13 @@
+*
+!.gitignore
+!README.md
+!stan.sh
+!bernoulli.
+!coin
+!coin.
+!german_tanks
+!german_tanks.*
+!mark_and_recapture
+!mark_and_recapture.*
+*.hpp
+*.csv
