@@ -4,7 +4,7 @@ set -e
 
 model="bernoulli"
 
-make_path="/home/albert/Home/stan/cmdstan-2.18.0"
+make_path="cmdstan-2.18.0"
 stan_path="$make_path/examples/$model"
 stan_file=$model
 

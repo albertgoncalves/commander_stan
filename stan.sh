@@ -2,8 +2,10 @@
 
 set -e
 
-make_path=$1
-stan_path=$2
+export stan_repo=$(pwd)
+
+make_path=$stan_repo/$1
+stan_path=$stan_repo/$2
 stan_file=$3
 
 cd $make_path
