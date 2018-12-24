@@ -11,9 +11,8 @@ Getting started
 ```
 $ git clone https://github.com/albertgoncalves/commander_stan.git
 $ cd commander_stan
-$ wget https://github.com/stan-dev/cmdstan/releases/download/v2.18.0/cmdstan-2.18.0.tar.gz
-$ tar -xzvf cmdstan-2.18.0.tar.gz
-$ cd cmdstan-2.18.0
+$ git clone https://github.com/stan-dev/cmdstan.git --recursive
+$ cd cmdstan
 $ make build
 ```
 
@@ -21,3 +20,5 @@ $ make build
 $ cd ../
 $ sh {bernoulli|coin|german_tanks}.sh
 ```
+
+These scripts wrap up the basic **CmdStan** workflow; if you need a refresher head over to [Getting Started with CmdStan](https://github.com/stan-dev/cmdstan/wiki/Getting-Started-with-CmdStan).
