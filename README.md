@@ -1,6 +1,6 @@
 # Commander Stan
 
-Had trouble getting **PyStan** or **RStan** to work so I put together an extremely simple toolbox to make things happen with **CmdStan**.
+Had trouble getting [PyStan](https://pystan.readthedocs.io/en/latest/index.html) or [RStan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started) to work in a [Nix](https://nixos.org/nix/) environment so I put together a simple toolbox to make things happen with [CmdStan](https://github.com/stan-dev/cmdstan).
 
 Needed things
 ---
