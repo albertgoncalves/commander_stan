@@ -13,9 +13,9 @@ models/coin/coin
 models/german_tanks/german_tanks
 !german_tanks.*
 !mark_and_recapture
-models/mark_and_recapture/mark_and_recapture
 !mark_and_recapture.*
+models/mark_and_recapture/mark_and_recapture
+models/mark_and_recapture/mark_and_recapture.data.R
 *.hpp
 *.csv
 *.d
-*.data.R

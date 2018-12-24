@@ -18,7 +18,7 @@ $ make build
 
 ```
 $ cd ../models/
-$ sh {bernoulli|coin|german_tanks}.sh
+$ sh {bernoulli|coin|german_tanks|mark_and_recapture}.sh
 ```
 
 These scripts wrap up the basic **CmdStan** workflow; if you need a refresher head over to [Getting Started with CmdStan](https://github.com/stan-dev/cmdstan/wiki/Getting-Started-with-CmdStan).
