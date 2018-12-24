@@ -5,6 +5,11 @@ set -e
 export stan_repo=$(pwd)
 
 make_path=$stan_repo/../cmdstan
+
+# $stan_path points to directory containing *.stan and *.data.R
+# inside $stan_path, $stan_file points to the specific files
+    # $stan_repo/$stan_path/$stan_file.stan
+    # $stan_repo/$stan_path/$stan_file.data.R
 stan_path=$stan_repo/$1
 stan_file=$2
 
