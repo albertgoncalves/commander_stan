@@ -1,8 +1,8 @@
+module D = Data
 module L = List
 module P = Printf
 module R = Random
 module S = String
-module D = Data
 
 let histogram xs =
     let xs = L.sort compare xs in
