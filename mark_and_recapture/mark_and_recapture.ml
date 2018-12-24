@@ -35,21 +35,19 @@ let label_samples ~pop samples =
     L.init samples (fun _ -> R.int pop)
 
 let label_captures ~pop ~sample_sizes =
-    L.flatten @@ List.map (label_samples ~pop) sample_sizes
+    L.flatten @@ L.map (label_samples ~pop) sample_sizes
 
 let export data =
-    let indiv k v = P.sprintf "%s <- %s" k v in
-    let vector k v = P.sprintf "%s <- c(%s)" k v in
+    let indiv to_string k v =
+        let v = to_string v in
+        P.sprintf "%s <- %s\n" k v in
+    let vector to_string k v =
+        let v = S.concat ", " @@ L.map to_string v in
+        P.sprintf "%s <- c(%s)\n" k v in
     let export = function
-        | Int (k, v) ->
-            let v = string_of_int v in
-            indiv k v
-        | IntList (k, v) ->
-            let v = S.concat ", " @@ L.map string_of_int v in
-            vector k v
-        | FloatList (k, v) ->
-            let v = S.concat ", " @@ L.map string_of_float v in
-            vector k v in
+        | Int (k, v) -> indiv string_of_int k v
+        | IntList (k, v) -> vector string_of_int k v
+        | FloatList (k, v) -> vector string_of_float k v in
     export data
 
 let main () =
@@ -66,4 +64,4 @@ let main () =
                     ; IntList ("freq", freq)
                     ] in
 
-    L.iter (fun data -> print_endline @@ export data) data_list
+    L.iter (fun data -> print_string @@ export data) data_list
