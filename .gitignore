@@ -1,7 +1,8 @@
 *
 !models
 !utils
-!utils.ml
+!data.ml
+!ocaml.sh
 !shell.nix
 !.ocp-indent
 !.gitignore
@@ -25,4 +26,3 @@ models/mark_and_recapture/mark_and_recapture.data.R
 *.cmi
 *.cmx
 *.o
-!ocaml.sh

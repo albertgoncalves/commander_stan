@@ -2,7 +2,7 @@ module L = List
 module P = Printf
 module R = Random
 module S = String
-module U = Utils
+module D = Data
 
 let histogram xs =
     let xs = L.sort compare xs in
@@ -41,12 +41,12 @@ let main () =
     let labels = label_captures ~pop ~sample_sizes in (* sampled pop labels *)
     let freq = histogram labels in
 
-    let data_list = L.map U.export [ U.Int ("n_samples", n_samples)
-                                   ; U.Int ("n_freq", L.length freq)
-                                   ; U.IntList ("sample_sizes", sample_sizes)
-                                   ; U.IntList ("freq", freq)
+    let data_list = L.map D.export [ D.Int ("n_samples", n_samples)
+                                   ; D.Int ("n_freq", L.length freq)
+                                   ; D.IntList ("sample_sizes", sample_sizes)
+                                   ; D.IntList ("freq", freq)
                                    ] in
 
-    U.write_to_file ~filename:"mark_and_recapture.data.R" data_list
+    D.write_to_file ~filename:"mark_and_recapture.data.R" data_list
 
 let () = main ()

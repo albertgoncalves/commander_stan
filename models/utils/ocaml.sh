@@ -2,7 +2,7 @@
 
 set -e
 
-ocamlfind ocamlopt ../utils/utils.ml \
+ocamlfind ocamlopt ../utils/data.ml \
     -I ../utils \
     -linkpkg $1.ml \
     -o $1
