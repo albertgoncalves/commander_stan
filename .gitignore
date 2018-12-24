@@ -14,3 +14,4 @@ german_tanks/german_tanks
 !mark_and_recapture.*
 *.hpp
 *.csv
+*.d

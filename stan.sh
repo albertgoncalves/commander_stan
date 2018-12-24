@@ -4,9 +4,9 @@ set -e
 
 export stan_repo=$(pwd)
 
-make_path=$stan_repo/$1
-stan_path=$stan_repo/$2
-stan_file=$3
+make_path=$stan_repo/cmdstan
+stan_path=$stan_repo/$1
+stan_file=$2
 
 cd $make_path
 make $stan_path/$stan_file
