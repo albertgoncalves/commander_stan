@@ -4,8 +4,10 @@
 !stan.sh
 !bernoulli.
 !coin
-!coin.
+coin/coin
+!coin.*
 !german_tanks
+german_tanks/german_tanks
 !german_tanks.*
 !mark_and_recapture
 !mark_and_recapture.*
