@@ -25,3 +25,4 @@ models/mark_and_recapture/mark_and_recapture.data.R
 *.cmi
 *.cmx
 *.o
+!ocaml.sh
