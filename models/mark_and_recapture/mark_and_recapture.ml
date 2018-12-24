@@ -8,6 +8,24 @@ type data =
     | IntList of string * int list
     | FloatList of string * float list
 
+let export data =
+    let indiv to_string k v =
+        let v = to_string v in
+        P.sprintf "%s <- %s" k v in
+    let vector to_string k v =
+        let v = S.concat ", " @@ L.map to_string v in
+        P.sprintf "%s <- c(%s)" k v in
+    let export = function
+        | Int (k, v) -> indiv string_of_int k v
+        | IntList (k, v) -> vector string_of_int k v
+        | FloatList (k, v) -> vector string_of_float k v in
+    export data
+
+let write_to_file ~filename lines =
+    let out_channel = open_out filename in
+    L.iter (fun line -> P.fprintf out_channel "%s\n" line) lines;
+    close_out out_channel
+
 let histogram xs =
     let xs = L.sort compare xs in
     let rec loop count accu = function
@@ -37,31 +55,20 @@ let label_samples ~pop samples =
 let label_captures ~pop ~sample_sizes =
     L.flatten @@ L.map (label_samples ~pop) sample_sizes
 
-let export data =
-    let indiv to_string k v =
-        let v = to_string v in
-        P.sprintf "%s <- %s\n" k v in
-    let vector to_string k v =
-        let v = S.concat ", " @@ L.map to_string v in
-        P.sprintf "%s <- c(%s)\n" k v in
-    let export = function
-        | Int (k, v) -> indiv string_of_int k v
-        | IntList (k, v) -> vector string_of_int k v
-        | FloatList (k, v) -> vector string_of_float k v in
-    export data
-
 let main () =
     let pop = 500 in (* population to be estimate from generated data *)
     let subpop = 25 in (* "true" sample event rate *)
-    let n_samples = 9 in (* number of capture events *)
+    let n_samples = 6 in (* number of capture events *)
     let sample_sizes = sample_counts ~subpop ~n_samples in
     let labels = label_captures ~pop ~sample_sizes in (* sampled pop labels *)
     let freq = histogram labels in
 
-    let data_list = [ Int ("n_samples", n_samples)
-                    ; Int ("n_freq", L.length freq)
-                    ; IntList ("sample_sizes", sample_sizes)
-                    ; IntList ("freq", freq)
-                    ] in
+    let data_list = L.map export [ Int ("n_samples", n_samples)
+                                 ; Int ("n_freq", L.length freq)
+                                 ; IntList ("sample_sizes", sample_sizes)
+                                 ; IntList ("freq", freq)
+                                 ] in
 
-    L.iter (fun data -> print_string @@ export data) data_list
+    write_to_file ~filename:"mark_and_recapture.data.R" data_list
+
+let () = main ()

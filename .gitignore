@@ -7,13 +7,15 @@
 !stan.sh
 !bernoulli.*
 !coin
-coin/coin
+models/coin/coin
 !coin.*
 !german_tanks
-german_tanks/german_tanks
+models/german_tanks/german_tanks
 !german_tanks.*
 !mark_and_recapture
+models/mark_and_recapture/mark_and_recapture
 !mark_and_recapture.*
 *.hpp
 *.csv
 *.d
+*.data.R
