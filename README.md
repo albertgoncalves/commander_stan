@@ -1,4 +1,4 @@
-# Command Stan
+# Commander Stan
 
 Had trouble getting **PyStan** or **RStan** to work so I put together an extremely simple toolbox to make things happen with **CmdStan**.
 
