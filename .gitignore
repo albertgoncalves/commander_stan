@@ -1,5 +1,6 @@
 *
 !models
+!shell.nix
 !.ocp-indent
 !.gitignore
 !README.md
