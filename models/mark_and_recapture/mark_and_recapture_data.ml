@@ -2,6 +2,7 @@ module L = List
 module P = Printf
 module R = Random
 module S = String
+module U = Utils
 
 type data =
     | Int of string * int
@@ -63,12 +64,12 @@ let main () =
     let labels = label_captures ~pop ~sample_sizes in (* sampled pop labels *)
     let freq = histogram labels in
 
-    let data_list = L.map export [ Int ("n_samples", n_samples)
-                                 ; Int ("n_freq", L.length freq)
-                                 ; IntList ("sample_sizes", sample_sizes)
-                                 ; IntList ("freq", freq)
-                                 ] in
+    let data_list = L.map U.export [ U.Int ("n_samples", n_samples)
+                                   ; U.Int ("n_freq", L.length freq)
+                                   ; U.IntList ("sample_sizes", sample_sizes)
+                                   ; U.IntList ("freq", freq)
+                                   ] in
 
-    write_to_file ~filename:"mark_and_recapture.data.R" data_list
+    U.write_to_file ~filename:"mark_and_recapture.data.R" data_list
 
 let () = main ()
