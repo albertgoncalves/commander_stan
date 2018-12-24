@@ -4,7 +4,7 @@
 !.gitignore
 !README.md
 !stan.sh
-!bernoulli.
+!bernoulli.*
 !coin
 coin/coin
 !coin.*
