@@ -17,7 +17,10 @@ cd $make_path
 make $stan_path/$stan_file
 
 cd $stan_path
-./$stan_file sample num_samples=1000 data file=$stan_file.data.R
+./$stan_file sample \
+    num_samples=1000 \
+    random seed=1 \
+    data file=$stan_file.data.R
 $make_path/bin/stansummary output.csv
 
 grep -v "#" output.csv > $stan_file.csv
