@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> {} }:
 with pkgs; mkShell {
-    name = "stan";
+    name = "CmdStan";
     buildInputs = [ ocaml-ng.ocamlPackages_4_07.ocaml
                     ocaml-ng.ocamlPackages_4_07.findlib
                     ocaml-ng.ocamlPackages_4_07.ocp-indent
