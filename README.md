@@ -10,9 +10,9 @@ Getting started
 ---
 ```
 $ git clone https://github.com/albertgoncalves/commander_stan.git
-$ cd commander_stan
+$ cd commander_stan/
 $ git clone https://github.com/stan-dev/cmdstan.git --recursive
-$ cd cmdstan
+$ cd cmdstan/
 $ make build
 ```
 
