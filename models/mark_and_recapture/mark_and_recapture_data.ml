@@ -1,5 +1,6 @@
 module D = Data
 module L = List
+module M = Math
 module P = Printf
 module R = Random
 module S = String
@@ -14,18 +15,9 @@ let histogram xs =
             else loop 1 (count::accu) xs in
     loop 1 [] xs
 
-let poisson ~theta =
-    let l = exp (-.theta) in
-    let k = 0 in
-    let p = 1.0 in
-    let rec loop k p =
-        let p = (p *. R.float 1.0) in
-        if p < l then k else loop (k + 1) p in
-    loop k p
-
 let sample_counts ~subpop ~n_samples =
     let theta = float_of_int subpop in
-    L.init n_samples (fun _ -> poisson ~theta)
+    L.init n_samples (fun _ -> M.poisson ~theta)
 
 let label_samples ~pop samples =
     L.init samples (fun _ -> R.int pop)
