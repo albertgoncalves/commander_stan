@@ -9,9 +9,7 @@ let swap a i j =
     a.(j) <- t
 
 let shuffle a =
-    let rand i =
-        let j = i + 1 in
-        R.int j in
+    let rand i = R.int (i + 1) in
     A.iteri (fun i _ -> swap a i (rand i)) a;
     a
 
