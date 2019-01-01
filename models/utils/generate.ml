@@ -1,5 +1,17 @@
+module A = Array
 module F = Float
 module R = Random
+
+let swap a i j =
+    let t = a.(i) in
+    a.(i) <- a.(j);
+    a.(j) <- t
+
+let shuffle l =
+    let a = A.of_list l in
+    let rand i = R.int (i + 1) in
+    A.iteri (fun i _ -> swap a i (rand i)) a;
+    A.to_list a
 
 (* https://www.johndcook.com/blog/2010/06/14/generating-poisson-random-values/ *)
 

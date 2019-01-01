@@ -2,7 +2,7 @@
 !models
 !utils
 !data.ml
-!math.ml
+!generate.ml
 !ocaml.sh
 !shell.nix
 !model.sh

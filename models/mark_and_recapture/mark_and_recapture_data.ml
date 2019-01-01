@@ -1,6 +1,6 @@
 module D = Data
+module G = Generate
 module L = List
-module M = Math
 module P = Printf
 module R = Random
 module S = String
@@ -17,7 +17,7 @@ let histogram xs =
 
 let sample_counts ~subpop ~n_samples =
     let theta = float_of_int subpop in
-    L.init n_samples (fun _ -> M.poisson ~theta)
+    L.init n_samples (fun _ -> G.poisson ~theta)
 
 let label_samples ~pop samples =
     L.init samples (fun _ -> R.int pop)
