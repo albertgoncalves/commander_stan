@@ -2,22 +2,27 @@
 
 set -e
 
-stan_file="solver"
-model_path="../models/solver"
+stan_repo=$(pwd)
 
-cd ../cmdstan/
-make $model_path/$stan_file
-./$model_path/$stan_file sample \
-    adapt engaged=0 \
-    num_samples=1 \
+make_path=$stan_repo/../cmdstan
+
+stan_file="solver"
+stan_path=$stan_repo/$stan_file
+
+cd $make_path
+make $stan_path/$stan_file
+
+cd $stan_path
+./$stan_file sample \
+    adapt engaged=1 \
+    num_samples=2 \
     num_warmup=0 \
     algorithm=fixed_param \
     random seed=1
-bin/stansummary ./$model_path/output.csv
+$make_path/bin/stansummary output.csv
 
-cd $model_path
 grep -v "#" output.csv > $stan_file.csv
 
 nix-shell \
     -p python36Packages.csvkit \
-    --run "head -n 2 $stan_file.csv | csvlook --no-inference"
+    --run "csvlook --no-inference $stan_file.csv"
