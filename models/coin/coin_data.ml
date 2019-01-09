@@ -9,10 +9,11 @@ let main () =
     let obs = G.shuffle @@ L.concat [ones; zeros] in
     let n = L.length obs in
 
-    let data_list = L.map D.export [ D.Int ("n", n)
-                                   ; D.IntList ("obs", obs)
-                                   ; D.Int ("m", 5)
-                                   ] in
+    let data_list = L.map D.export
+        [ D.Int ("n", n)
+        ; D.IntList ("obs", obs)
+        ; D.Int ("m", 5)
+        ] in
 
     D.write_to_file ~filename:"coin.data.R" data_list
 

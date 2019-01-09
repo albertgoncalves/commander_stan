@@ -33,11 +33,12 @@ let main () =
     let labels = label_captures ~pop ~sample_sizes in (* sampled pop labels *)
     let freq = histogram labels in
 
-    let data_list = L.map D.export [ D.Int ("n_samples", n_samples)
-                                   ; D.Int ("n_freq", L.length freq)
-                                   ; D.IntList ("sample_sizes", sample_sizes)
-                                   ; D.IntList ("freq", freq)
-                                   ] in
+    let data_list = L.map D.export
+        [ D.Int ("n_samples", n_samples)
+        ; D.Int ("n_freq", L.length freq)
+        ; D.IntList ("sample_sizes", sample_sizes)
+        ; D.IntList ("freq", freq)
+        ] in
 
     D.write_to_file ~filename:"mark_and_recapture.data.R" data_list
 
