@@ -1,5 +1,4 @@
 data {
-    // $ python; population = 1000; obs = np.random.randint(0, population, n)
     int n;
     real obs[n];
 }
