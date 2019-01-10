@@ -6,7 +6,7 @@ data {
 }
 
 parameters {
-    real<lower=1> sample_rate; // simple lower bound to sample size rate
+    real<lower=0> sample_rate; // simple lower bound to sample size rate
     real<lower=n_freq> pop; // estimated population
 }
 
@@ -16,6 +16,7 @@ transformed parameters {
 }                                             // given sampling conditions
 
 model {
+    sample_rate ~ exponential(0.1);
     sample_sizes ~ poisson(sample_rate);
 
     for (i in 1:n_freq) {                // labels counted 0 times

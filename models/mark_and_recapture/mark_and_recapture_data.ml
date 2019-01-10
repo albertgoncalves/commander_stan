@@ -27,7 +27,7 @@ let label_captures ~pop ~sample_sizes =
 
 let main () =
     let pop = 1500 in (* population to be estimate from generated data *)
-    let subpop = 100 in (* "true" sample event rate *)
+    let subpop = 50 in (* "true" sample event rate *)
     let n_samples = 3 in (* number of capture events *)
     let sample_sizes = sample_counts ~subpop ~n_samples in
     let labels = label_captures ~pop ~sample_sizes in (* sampled pop labels *)
