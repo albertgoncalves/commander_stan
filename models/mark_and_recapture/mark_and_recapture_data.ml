@@ -26,9 +26,9 @@ let label_captures ~pop ~sample_sizes =
     L.flatten @@ L.map (label_samples ~pop) sample_sizes
 
 let main () =
-    let pop = 500 in (* population to be estimate from generated data *)
-    let subpop = 25 in (* "true" sample event rate *)
-    let n_samples = 7 in (* number of capture events *)
+    let pop = 1500 in (* population to be estimate from generated data *)
+    let subpop = 100 in (* "true" sample event rate *)
+    let n_samples = 3 in (* number of capture events *)
     let sample_sizes = sample_counts ~subpop ~n_samples in
     let labels = label_captures ~pop ~sample_sizes in (* sampled pop labels *)
     let freq = histogram labels in

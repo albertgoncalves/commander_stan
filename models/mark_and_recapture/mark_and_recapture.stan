@@ -17,7 +17,8 @@ transformed parameters {
 
 model {
     sample_sizes ~ poisson(sample_rate);
-    for (i in 1:n_freq) {
-        freq[i] ~ poisson(lambda)T[1, ]; // labels counted 0 times
-    }                                    // unobservable -> all freq part of
-}                                        // truncated distribution
+
+    for (i in 1:n_freq) {                // labels counted 0 times
+        freq[i] ~ poisson(lambda)T[1, ]; // unobservable -> all freq part of
+    }                                    // truncated distribution
+}
