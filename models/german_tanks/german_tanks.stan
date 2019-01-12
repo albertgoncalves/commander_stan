@@ -3,8 +3,12 @@ data {
     real obs[n];
 }
 
+transformed data {
+    real max_obs = max(obs);
+}
+
 parameters {
-    real<lower=max(obs)> pop;
+    real<lower=max_obs> pop;
 }
 
 model {

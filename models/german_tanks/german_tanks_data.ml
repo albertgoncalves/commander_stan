@@ -3,8 +3,8 @@ module L = List
 module R = Random
 
 let main () =
-    let pop = 1000 in
-    let n = 5 in
+    let pop = 10000 in
+    let n = 7 in
     let obs = L.init n (fun _ -> R.int pop) in
 
     let data_list = L.map D.export
