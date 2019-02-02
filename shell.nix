@@ -7,6 +7,8 @@ with pkgs; mkShell {
                     ocaml-ng.ocamlPackages_4_07.utop
                     python36Packages.csvkit
                     fzf
+                    R
+                    rPackages.lintr
                   ];
     shellHook = ''
         if [ $(uname -s) = "Darwin" ]; then
@@ -27,5 +29,12 @@ with pkgs; mkShell {
         alias vimfzf="withfzf vim"
 
         export -f withfzf
+
+        lintr() {
+            R -e "library(lintr); lint('$1')" \
+                | awk '/> /{ found=1 } { if (found) print }'
+        }
+
+        export -f lintr
     '';
 }

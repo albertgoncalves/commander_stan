@@ -15,17 +15,14 @@
 !coin.*
 !coin_data.*
 models/coin/coin
-models/coin/coin.data.R
 !german_tanks
 !german_tanks.*
 !german_tanks_data.*
 models/german_tanks/german_tanks
-models/german_tanks/german_tanks.data.R
 !mark_and_recapture
 !mark_and_recapture.*
 !mark_and_recapture_data.*
 models/mark_and_recapture/mark_and_recapture
-models/mark_and_recapture/mark_and_recapture.data.R
 !solver
 !solver.*
 models/solver/solver
@@ -35,3 +32,5 @@ models/solver/solver
 *.cmi
 *.cmx
 *.o
+!models/*/*_plot.R
+models/*/*.data.R
