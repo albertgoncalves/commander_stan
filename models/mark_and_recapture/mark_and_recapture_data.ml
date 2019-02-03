@@ -11,8 +11,10 @@ let histogram xs =
         | [] -> []
         | [x] -> count::accu
         | x::(xx::_ as xs) ->
-            if x = xx then loop (count + 1) accu xs
-            else loop 1 (count::accu) xs in
+            if x = xx then
+                loop (count + 1) accu xs
+            else
+                loop 1 (count::accu) xs in
     loop 1 [] xs
 
 let sample_counts ~subpop ~n_samples =
@@ -33,12 +35,13 @@ let main () =
     let labels = label_captures ~pop ~sample_sizes in (* sampled pop labels *)
     let freq = histogram labels in
 
-    let data_list = L.map D.export
-        [ D.Int ("n_samples", n_samples)
-        ; D.Int ("n_freq", L.length freq)
-        ; D.IntList ("sample_sizes", sample_sizes)
-        ; D.IntList ("freq", freq)
-        ] in
+    let data_list =
+        L.map D.export
+            [ D.Int ("n_samples", n_samples)
+            ; D.Int ("n_freq", L.length freq)
+            ; D.IntList ("sample_sizes", sample_sizes)
+            ; D.IntList ("freq", freq)
+            ] in
 
     D.write_to_file ~filename:"mark_and_recapture.data.R" data_list
 
