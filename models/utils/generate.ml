@@ -18,7 +18,10 @@ let shuffle l =
 let poisson ~theta =
     let l = exp @@ -.theta in
     let rec loop k p =
-        if p > l then loop (k + 1) (p *. R.float 1.0) else k in
+        if p > l then
+            loop (k + 1) (p *. R.float 1.0)
+        else
+            k in
     loop 0 1.0
 
 (* https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform#Basic_form *)
