@@ -1,6 +1,7 @@
 module L = List
 module P = Printf
 module S = String
+module U = Utils
 
 type data =
     | Int of string * int
@@ -22,5 +23,8 @@ let export data =
 
 let write_to_file ~filename lines =
     let out_channel = open_out filename in
-    L.iter (fun line -> P.fprintf out_channel "%s\n" line) lines;
-    close_out out_channel
+    let lambda ()=
+        L.iter (fun line -> P.fprintf out_channel "%s\n" line) lines in
+    U.finally
+        lambda
+        (fun () -> close_out out_channel)

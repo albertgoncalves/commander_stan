@@ -2,8 +2,8 @@
 
 set -e
 
-ocamlfind ocamlopt ../utils/data.ml ../utils/generate.ml \
+ocamlfind ocamlopt \
     -I ../utils \
-    -linkpkg $1.ml \
+    -linkpkg ../utils/utils.ml ../utils/data.ml ../utils/generate.ml $1.ml \
     -o $1
 ./$1
