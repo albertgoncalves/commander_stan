@@ -24,5 +24,7 @@ $make_path/bin/stansummary output.csv
 grep -v "#" output.csv > $stan_file.csv
 
 nix-shell \
-    -p python36Packages.csvkit \
+    -p '(with python36Packages; [
+        (csvkit.overridePythonAttrs (oldAttrs: {checkPhase = "true";}))
+    ])' \
     --run "csvlook --no-inference $stan_file.csv"
